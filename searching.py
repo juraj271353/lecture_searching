@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import time
 
 
 
@@ -17,10 +18,16 @@ def linear_search(seq, number):
     count = 0
     positions = []
 
+    start = time.perf_counter()
+
     for index,num in enumerate(seq):
         if num == number:
             positions.append(index)
             count += 1
+
+    end = time.perf_counter()
+    duration = end - start
+    print(f"Měření trvalo {duration:.8f} s")
 
     return {
         "positions": positions,
@@ -33,13 +40,31 @@ def binary_search(numbers, key):
     right_margin = numbers[-1]
     middle = numbers[len(numbers) // 2]
 
+    start = time.perf_counter()
+
     if key < middle:
-        return numbers[left_margin:middle]
+        result = numbers[left_margin:middle]
     elif key > middle:
-        return numbers[middle:right_margin]
+        result = numbers[middle:right_margin]
+
+    end = time.perf_counter()
+    duration = end - start
+    print(f"Měření trvalo {duration:.8f} s")
+
+    return result
 
 
+import matplotlib.pyplot as plt
 
+sizes = [100, 500, 1000, 5000, 10000]
+times = [0.00001, 0.00003, 0.00006, 0.00031, 0.00067]
+
+plt.plot(sizes, times)
+
+plt.xlabel("Velikost vstupu")
+plt.ylabel("Čas [s]")
+plt.title("Ukázkový graf měření")
+plt.show()
 
 
 def main():
