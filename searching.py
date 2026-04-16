@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 
 
+
 def read_data(file_name, field):
     """
     Reads a JSON file and returns data for a given field.
