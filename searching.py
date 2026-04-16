@@ -67,6 +67,9 @@ plt.title("Ukázkový graf měření")
 plt.show()
 
 
+def pattern_search(sekvencia, vzor):
+
+
 def main():
     unordered_numbers = read_data("sequential.json", "unordered_numbers")
     print(unordered_numbers)
@@ -75,6 +78,9 @@ def main():
 
     ordered_numbers = read_data("sequential.json", "ordered_numbers")
     print(binary_search(ordered_numbers, 14))
+
+    seq = read_data("sequential.json", "ATA")
+    print(pattern_search(seq, "ATA"))
 
 
 if __name__ == "__main__":
